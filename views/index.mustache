@@ -1,0 +1,58 @@
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="bower_components/fieldval/fieldval.js"></script>
+<script type="text/javascript" src="bower_components/fieldval-ui/fieldval-ui.js"></script>
+<script type="text/javascript" src="bower_components/fieldval-ui/themes/minimal.js"></script>
+<script type="text/javascript" src="bower_components/fieldval-rules/fieldval-rules.js"></script>
+
+<link rel="stylesheet" type="text/css" href="bower_components/fieldval-ui/themes/minimal.css">
+
+<script type="text/javascript" src="my_user_rule.js"></script>
+
+<script type="text/javascript">
+
+	var user = {{&user}};
+
+	$(document).ready(function() {
+
+		if (user) {
+			console.log(user);
+			$("body").append(
+				$("<p/>").text("Signed in as " + user.username),
+				$("<button/>").text("Sign out").click(function() {
+					$.post("/sign_out", function(res) {
+						location.reload();
+					})
+				})
+			)
+		} else {
+			var rule = new FVRule();	
+			rule.init(my_user_rule);
+			var form = rule.create_form();
+			$("body").append(
+				form.element.append(
+					$("<button/>").text("Submit")
+				)
+			)
+
+			form.on_submit(function(value) {
+				rule.validate(value, function(error) {
+					form.clear_errors();
+					if (error) {
+						form.error(error);
+					} else {
+						$.post('/login', value, function(res) {
+							console.log(res);
+							if (res.error) {
+								form.error(res);
+							} else {
+								location.reload();
+							}
+						})		
+					}
+				})
+				
+			})	
+		}
+	})
+		
+</script>

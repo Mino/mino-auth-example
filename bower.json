@@ -1,0 +1,14 @@
+{
+  "name": "mino-auth-example",
+  "version": "0.0.0",
+  "authors": [
+    "bestan <bestan93@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "*",
+    "fieldval": "0.4.0",
+    "fieldval-ui": "FieldVal/fieldval-ui#develop",
+    "fieldval-rules": "FieldVal/fieldval-rules-js#develop"
+  }
+}

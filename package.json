@@ -1,0 +1,24 @@
+{
+  "name": "mino-auth-example",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+  	"mustache-express": "*",
+  	"express": "*",
+    "cookie-parser": "*",
+  	"body-parser": "*",
+  	"minodb": "Mino/MinoDB#develop_auth_plugin",
+  	"tracer": "*",
+    "fieldval": "0.4.0",
+    "fieldval-rules": "FieldVal/fieldval-rules-js#develop",
+    "bower": "*"
+  },
+  "devDependencies": {
+  	"gulp": "*",
+  	"gulp-util": "*",
+  	"gulp-nodemon": "*"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install"
+  }
+}
