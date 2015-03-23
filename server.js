@@ -70,7 +70,7 @@ auth.login = function(object, options, callback) {
     		logger.log(user_record, object);
     		if (user_record.my_user.my_password == object.my_password) {
 
-    			auth.create_session(user_record.my_user.my_username, function(session_err,session_res){
+    			auth.create_session(user_record._id, function(session_err,session_res){
     				logger.log(
     					JSON.stringify(session_err,null,4),
     					session_res

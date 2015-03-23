@@ -17,7 +17,7 @@
 		if (user) {
 			console.log(user);
 			$("body").append(
-				$("<p/>").text("Signed in as " + user.username),
+				$("<p/>").text("Signed in as " + user.my_user.my_username),
 				$("<button/>").text("Sign out").click(function() {
 					$.post("/sign_out", function(res) {
 						location.reload();
