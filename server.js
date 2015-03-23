@@ -59,7 +59,7 @@ auth.create_user = function(object, callback) {
 	})
 }
 
-auth.login = function(object, options, callback) {
+auth.sign_in = function(object, options, callback) {
 	var auth = this;
     auth.get_user("my_user.my_username", object.my_username, function(error,user_record){
     	if (error) {
@@ -98,7 +98,7 @@ require('./initial_data')(mino, function() {
 
 server.post('/login', function(req, res) {
 	logger.log(req.body);
-	auth.login(req.body, {identifier: "my_username"}, function(err, user, session) {
+	auth.sign_in(req.body, {identifier: "my_username"}, function(err, user, session) {
 		if (err) {
 			var validator = new FieldVal(null);
 			if (err.error == 117) {
